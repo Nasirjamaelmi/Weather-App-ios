@@ -15,6 +15,7 @@
 		0F87686A2B61298B00733782 /* Weather_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8768692B61298B00733782 /* Weather_appTests.swift */; };
 		0F8768742B61298B00733782 /* Weather_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8768732B61298B00733782 /* Weather_appUITests.swift */; };
 		0F8768762B61298B00733782 /* Weather_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8768752B61298B00733782 /* Weather_appUITestsLaunchTests.swift */; };
+		0FFBDE152B62A885002B3B7C /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBDE142B62A885002B3B7C /* LocationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		0F87686F2B61298B00733782 /* Weather-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Weather-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F8768732B61298B00733782 /* Weather_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather_appUITests.swift; sourceTree = "<group>"; };
 		0F8768752B61298B00733782 /* Weather_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0FFBDE142B62A885002B3B7C /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				0F8768572B61298A00733782 /* Weather_appApp.swift */,
 				0F8768592B61298A00733782 /* ContentView.swift */,
+				0FFBDE142B62A885002B3B7C /* LocationView.swift */,
 				0F87685B2B61298B00733782 /* Assets.xcassets */,
 				0F87685D2B61298B00733782 /* Weather_app.entitlements */,
 				0F87685E2B61298B00733782 /* Preview Content */,
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F0E0E702B61626D0055982E /* Class .swift in Sources */,
+				0FFBDE152B62A885002B3B7C /* LocationView.swift in Sources */,
 				0F87685A2B61298A00733782 /* ContentView.swift in Sources */,
 				0F8768582B61298A00733782 /* Weather_appApp.swift in Sources */,
 			);
