@@ -39,3 +39,9 @@
                 }
             }
         }
+#Preview{
+    
+    LocationView()
+}
+    
+
