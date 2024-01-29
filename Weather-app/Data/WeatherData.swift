@@ -20,5 +20,8 @@ struct Current:Decodable{
 }
 
 struct Daily:Decodable{
-    let 
+    let time: [String]
+    let weathercode:[Int]
+    let tempMax: [Double]
+    let tempMin: [Double]
 }
