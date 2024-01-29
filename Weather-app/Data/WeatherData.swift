@@ -6,3 +6,19 @@
 //
 
 import Foundation
+import Observation
+
+struct WeatherData:Decodable{
+    let latitude :Double
+    let longitude: Double
+    
+}
+
+struct Current:Decodable{
+    let time: String
+    let temp: Double
+}
+
+struct Daily:Decodable{
+    let 
+}

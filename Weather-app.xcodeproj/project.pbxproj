@@ -25,6 +25,7 @@
 		0F936DA52B63FE2500010050 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBDE142B62A885002B3B7C /* LocationView.swift */; };
 		0F936DA62B64023200010050 /* Class .swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E0E6F2B61626D0055982E /* Class .swift */; };
 		0F936DA92B64049000010050 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F936DA82B64049000010050 /* WidgetView.swift */; };
+		0FE2FF1A2B680D2A008E82FF /* FeedMofrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE2FF192B680D2A008E82FF /* FeedMofrl.swift */; };
 		0FFBDE152B62A885002B3B7C /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBDE142B62A885002B3B7C /* LocationView.swift */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +96,7 @@
 		0F936DA12B63E64F00010050 /* WeatherWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeatherWidgetExtension.entitlements; sourceTree = "<group>"; };
 		0F936DA32B63EFAA00010050 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		0F936DA82B64049000010050 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
+		0FE2FF192B680D2A008E82FF /* FeedMofrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMofrl.swift; sourceTree = "<group>"; };
 		0FFBDE142B62A885002B3B7C /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -218,6 +220,7 @@
 			children = (
 				0F0E0E6F2B61626D0055982E /* Class .swift */,
 				0F936DA32B63EFAA00010050 /* WeatherData.swift */,
+				0FE2FF192B680D2A008E82FF /* FeedMofrl.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F936DA92B64049000010050 /* WidgetView.swift in Sources */,
+				0FE2FF1A2B680D2A008E82FF /* FeedMofrl.swift in Sources */,
 				0F0E0E702B61626D0055982E /* Class .swift in Sources */,
 				0F936DA42B63EFAA00010050 /* WeatherData.swift in Sources */,
 				0FFBDE152B62A885002B3B7C /* LocationView.swift in Sources */,
