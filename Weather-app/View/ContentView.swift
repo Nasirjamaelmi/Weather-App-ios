@@ -13,20 +13,17 @@ let backgroundGradient = LinearGradient(
 
 
 
-struct Result:Codable {
-    var trackID: Int
-    var trackName: String
-    var collectionName:String
-}
+
 struct ContentView: View {
+    
     
 
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            NavigationStack{
+                FeedView()
+                    .navigationTitle("WeatherAPP")
+            }
         } .background(backgroundGradient)
         .padding()
     }
