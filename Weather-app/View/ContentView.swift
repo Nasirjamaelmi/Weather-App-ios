@@ -15,22 +15,24 @@ let backgroundGradient = LinearGradient(
 
 
 struct ContentView: View {
-    
-    
-
     var body: some View {
         VStack {
             NavigationStack{
                 FeedView()
                     .navigationTitle("WeatherAPP")
+                NavigationLink {
+                    FeedView()
+                } label: {
+                    Text("To FeedView")
+                }
+
             }
         } .background(backgroundGradient)
         .padding()
     }
-       
 }
-
 
 #Preview {
     ContentView()
 }
+

@@ -13,12 +13,21 @@ struct FeedView:View{
     
     var body:some View{
         VStack{
+            if let data = model.weatherData {
+                Text("\(data.current.temp)")
+            }
+            /*
             if model.islLoading {
                 ProgressView()
             }
             else{
                 Text("Finished Loading!")
+            } */
+            if let modelllll = model.weatherData {
+                Text("\(modelllll.latitude)")
+                
             }
+            Text("HJI")
         }
         .task{
             try? await model.loadFeed()

@@ -43,7 +43,8 @@ struct LocationEntryView : View {
     
     var entry: Provider.Entry
     var body: some View {
-        LocationView()
+        //LocationView()
+        Text("Jönköping")
     }
 }
 
