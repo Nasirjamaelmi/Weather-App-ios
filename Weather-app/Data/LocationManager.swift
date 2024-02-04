@@ -1,26 +1,28 @@
 //
-//  Class .swift
+//  LocationManager.swift
 //  Weather-app
 //
-//  Created by Nasir Jama Elmi on 2024-01-24.
+//  Created by Nasir Jama Elmi on 2024-02-04.
 //
-
-import Foundation
 
 import Foundation
 import CoreLocation
 import Observation
+import MapKit
 
 
 
 
 @Observable
-class LocationManager: NSObject, CLLocationManagerDelegate {
+class LocationManager: NSObject,ObservableObject, CLLocationManagerDelegate {
 
     private let locationManager = CLLocationManager()
     private let geocoder = CLGeocoder()
     var location: CLLocation?
-    var address: CLPlacemark?
+    var adress: CLPlacemark?
+    var weatherModel: WeatherModel?
+    var cityname = ""
+    
 
     override init() {
         super.init()
@@ -36,11 +38,11 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         }
     }
 
-    func reverseGeocodeLocation(_ location: CLLocation) {
-        Task {
+    func reverseGeocodeLocation(_ location: CLLocation){
+        Task{
             let placemarks = try? await geocoder.reverseGeocodeLocation(location)
-            address = placemarks?.last
-        }
+            adress = placemarks?.last
+            self.cityname = self.adress?.locality ?? "unknown"        }
     }
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -53,6 +55,10 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         location = locations.last
         if let location {
             reverseGeocodeLocation(location)
+            Task{
+                await weatherModel?.loadFeed(lat: location.coordinate.latitude, long: location.coordinate.longitude)
+                print("location manager has new data delivered")
+            }
         }
     }
 
@@ -60,3 +66,4 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         // Do something in case of error
     }
 }
+

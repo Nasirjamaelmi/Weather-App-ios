@@ -4,7 +4,7 @@
 //
 //  Created by Nasir Jama Elmi on 2024-01-25.
 //
-
+/*
     import Foundation
     import SwiftUI
 
@@ -44,4 +44,4 @@
     LocationView()
 }
     
-
+*/
