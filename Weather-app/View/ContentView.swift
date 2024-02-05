@@ -29,11 +29,13 @@ struct ContentView: View {
             VStack {
                 List(model.weatherData, id: \.timezone){weatherdata in
                     HStack{
-                        Text("Time: ")
-                        Text(weatherdata.current.time)
+                        Text("Current Temp: \(String(format: "%.1f", weatherdata.current.temperature_2m)) °C")
+
+                       
                     }
-                    if let location = locationManager.location{
-                        Text("Current: \(locationManager.cityname), \(location.coordinate.longitude)")
+                  
+                    if locationManager.location != nil{
+                        Text("Current: \(locationManager.cityname)")
                         
                     }
                     else{
