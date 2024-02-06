@@ -24,6 +24,7 @@ struct WeatherData: Codable {
            return dateFormatter.string(from: Date())
        }
     }
+
 struct Units: Codable{
     let time:String
     let interval:String

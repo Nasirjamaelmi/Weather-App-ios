@@ -13,7 +13,7 @@ import Observation
 @Observable
 class WeatherModel{
     
-    var weatherData: [WeatherData] = []
+    var weatherData: WeatherData?
     var islLoading = false
     
     func loadFeed(lat: Double, long: Double) async {
@@ -29,7 +29,7 @@ class WeatherModel{
             let(data,_) = try await URLSession.shared.data(from: url)
             print(data)
             let decodedData  = try JSONDecoder().decode(WeatherData.self, from: data)
-            self.weatherData = [decodedData]
+            self.weatherData = decodedData
 
         }
         catch{
