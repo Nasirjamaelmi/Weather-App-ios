@@ -10,25 +10,25 @@ import SwiftUI
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), emoji: "😀")
+        SimpleEntry(date: Date(), temp: 5.6)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), emoji: "😀")
+        let entry = SimpleEntry(date: Date(), temp: 4.5)
         completion(entry)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+        
+        let userDefaults = UserDefaults(suiteName: "group.jana22oj")
+        let savedTemperature = userDefaults?.double(forKey: "currentTemp")
         var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, emoji: "😀")
-            entries.append(entry)
-        }
-
+        for dayOffset in 0 ..< 7 {
+                   let entryDate = Calendar.current.date(byAdding: .day, value: dayOffset, to: currentDate)!
+                   let entry = SimpleEntry(date: entryDate, temp: savedTemperature ?? 0)
+                   entries.append(entry)
+               }
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
@@ -36,31 +36,43 @@ struct Provider: TimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let emoji: String
+    let temp: Double
 }
 
-struct LocationEntryView : View {
+struct MyWidgetEntryView : View {
     
     var entry: Provider.Entry
     var body: some View {
-        //LocationView()
-        Text("Jönköping")
-    }
-}
-
-struct WeatherWidgetEntryView : View {
-    var entry: Provider.Entry
-
-    var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
-
-            Text("Emoji:")
-            Text(entry.emoji)
+        ZStack{
+            //ContainerRelativeShape()
+            //.background(Image(.background))
+            VStack(alignment: .leading){
+                HStack {
+                    
+                    Text("🌡️").font(.largeTitle)
+                    Text(entry.date.formatted(.dateTime.weekday())).font(.title)
+                        .fontWeight(.bold)
+                        .minimumScaleFactor(0.6)
+                        .foregroundColor(.white.opacity(0.6))
+                    //Spacer()
+                }
+                HStack{
+                   
+                    Text(entry.date.formatted(.dateTime.day()))
+                        .foregroundColor(.white.opacity(0.9))
+                    Text("Temp: \(String(describing: entry.temp)) °C") .foregroundColor(.white.opacity(0.8))
+                    
+                }
+            } .onAppear {
+                print("Widget entry appeared with temperature: \(entry.temp)")
+            }
+            
+            //.padding(2)
         }
+        
     }
 }
+
 
 struct WeatherWidget: Widget {
     let kind: String = "WeatherWidget"
@@ -68,10 +80,10 @@ struct WeatherWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             if #available(iOS 17.0, *) {
-                LocationEntryView(entry: entry)
+                MyWidgetEntryView(entry: entry)
                     .containerBackground(.fill.tertiary, for: .widget)
             } else {
-                LocationEntryView(entry: entry)
+                MyWidgetEntryView(entry: entry)
                     .padding()
                     .background()
             }
@@ -84,6 +96,6 @@ struct WeatherWidget: Widget {
 #Preview(as: .systemSmall) {
     WeatherWidget()
 } timeline: {
-    SimpleEntry(date: .now, emoji: "😀")
-    SimpleEntry(date: .now, emoji: "🤩")
+    SimpleEntry(date: .now, temp: 0.5)
+    SimpleEntry(date: .now, temp: 7.0)
 }

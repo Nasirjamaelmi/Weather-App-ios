@@ -30,6 +30,8 @@ class WeatherModel{
             print(data)
             let decodedData  = try JSONDecoder().decode(WeatherData.self, from: data)
             self.weatherData = decodedData
+            UserDefaults(suiteName: "group.jana22oj")?.set(weatherData?.current.temperature_2m, forKey: "currentTemp")
+            print(weatherData?.current.temperature_2m ?? 0.0)
 
         }
         catch{
