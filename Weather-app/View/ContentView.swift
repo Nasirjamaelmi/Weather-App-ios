@@ -17,6 +17,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    
+    
     var model = WeatherModel()
     var locationManager = LocationManager()
     
@@ -38,7 +40,7 @@ struct ContentView: View {
             else{
                 Text("No location")
             }
-         
+            
             let index = 0
             
             
@@ -47,18 +49,19 @@ struct ContentView: View {
                     ForEach(0..<min(7, weatherData.daily.time.count), id: \.self) { index in
                         if index < weatherData.daily.time.count {
                             let formattedDay = weatherData.daily.formattedDayOfWeek(forIndex: index)
+                            let minTemperature = weatherData.daily.temperature_2m_min[index]
                             let maxTemperature = weatherData.daily.temperature_2m_max[index]
                             
-                            Text("\(formattedDay ): Max Temp \(String(format: "%.0f",maxTemperature)) °C")
+                            Text(" \(formattedDay ) :Temperature \(String(format: "%.0f",minTemperature)) - \(String(format:"%.0f",maxTemperature)) °C")
                         }
-                    
+                        
                     }
                 }
             }.padding(.top, 150)
-         
-        
-                
-                // .background(backgroundGradient)
+            
+            
+            
+            // .background(backgroundGradient)
                 .padding()
                 .onAppear(){
                     locationManager.requestLocation()
@@ -66,14 +69,15 @@ struct ContentView: View {
                 .refreshable {
                     locationManager.requestLocation()
                 }
-            }
         }
+    }
+    
+    
+    
+    
+    #Preview {
+        ContentView()
+        
+    }
 }
-        
-        
-        
-        #Preview {
-            ContentView()
-            
-        }
-        
+    

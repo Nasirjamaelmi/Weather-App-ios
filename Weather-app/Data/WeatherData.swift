@@ -34,7 +34,7 @@ struct Units: Codable{
 struct Current: Codable {
     var time: String
     var temperature_2m: Double
-   var weather_code: Int
+    var weather_code: Int
 }
 
 
@@ -42,6 +42,7 @@ struct Daily: Codable {
     var time: [String]
     var weather_code: [Int]
     var temperature_2m_max: [Double]
+    var temperature_2m_min: [Double]
 
     func formattedDayOfWeek(forIndex index: Int) -> String {
         let calendar = Calendar.current
