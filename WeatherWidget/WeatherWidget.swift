@@ -10,11 +10,11 @@ import SwiftUI
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), temp: 5.6)
+        SimpleEntry(date: Date(), temp: 5.6, location: "Unkown")
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), temp: 4.5)
+        let entry = SimpleEntry(date: Date(), temp: 4.5, location:"Unkown")
         completion(entry)
     }
 
@@ -22,11 +22,12 @@ struct Provider: TimelineProvider {
         
         let userDefaults = UserDefaults(suiteName: "group.jana22oj")
         let savedTemperature = userDefaults?.double(forKey: "currentTemp")
+        let savedLocation = userDefaults?.string(forKey: "location")
         var entries: [SimpleEntry] = []
         let currentDate = Date()
         for dayOffset in 0 ..< 7 {
                    let entryDate = Calendar.current.date(byAdding: .day, value: dayOffset, to: currentDate)!
-                   let entry = SimpleEntry(date: entryDate, temp: savedTemperature ?? 0)
+            let entry = SimpleEntry(date: entryDate, temp: savedTemperature ?? 0, location:  savedLocation ?? "Unkown")
                    entries.append(entry)
                }
         let timeline = Timeline(entries: entries, policy: .atEnd)
@@ -37,9 +38,11 @@ struct Provider: TimelineProvider {
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let temp: Double
+    let location: String
 }
 
 struct MyWidgetEntryView : View {
+    
     
     var entry: Provider.Entry
     var body: some View {
@@ -47,20 +50,11 @@ struct MyWidgetEntryView : View {
             //ContainerRelativeShape()
             //.background(Image(.background))
             VStack(alignment: .leading){
-                HStack {
-                    
-                    Text("🌡️").font(.largeTitle)
-                    Text(entry.date.formatted(.dateTime.weekday())).font(.title)
-                        .fontWeight(.bold)
-                        .minimumScaleFactor(0.6)
-                        .foregroundColor(.white.opacity(0.6))
-                    //Spacer()
-                }
                 HStack{
+                    Text(entry.date.formatted(.dateTime.weekday(.wide)))
+                        .foregroundColor(.black)
                    
-                    Text(entry.date.formatted(.dateTime.day()))
-                        .foregroundColor(.white.opacity(0.9))
-                    Text("Temp: \(String(describing: entry.temp)) °C") .foregroundColor(.white.opacity(0.8))
+                      Text("Temp: \(String(format: "%0.f", entry.temp)) °C") .foregroundColor(.black)
                     
                 }
             } .onAppear {
@@ -96,6 +90,6 @@ struct WeatherWidget: Widget {
 #Preview(as: .systemSmall) {
     WeatherWidget()
 } timeline: {
-    SimpleEntry(date: .now, temp: 0.5)
-    SimpleEntry(date: .now, temp: 7.0)
+    SimpleEntry(date: .now, temp: 0.5,location: "Unkown")
+    SimpleEntry(date: .now, temp: 7.0,location: "Unkown")
 }

@@ -49,7 +49,7 @@ struct Daily: Codable {
         let currentDate = Date()
         if let startDate = calendar.date(byAdding: .day, value: index, to: currentDate) {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "E-ddMMMM"
+            dateFormatter.dateFormat = "EE-dd-MM"
             return dateFormatter.string(from: startDate)
         } else {
             return "Invalid date"

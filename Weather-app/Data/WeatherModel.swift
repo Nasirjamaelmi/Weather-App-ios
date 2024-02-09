@@ -9,6 +9,7 @@
 import Foundation
 import CoreLocation
 import Observation
+import WidgetKit
 
 @Observable
 class WeatherModel{
@@ -31,6 +32,9 @@ class WeatherModel{
             let decodedData  = try JSONDecoder().decode(WeatherData.self, from: data)
             self.weatherData = decodedData
             UserDefaults(suiteName: "group.jana22oj")?.set(weatherData?.current.temperature_2m, forKey: "currentTemp")
+            UserDefaults(suiteName: "group.jana22oj")?.set(LocationManager().cityname, forKey:"location")
+            WidgetCenter.shared.reloadAllTimelines()
+                
             print(weatherData?.current.temperature_2m ?? 0.0)
 
         }

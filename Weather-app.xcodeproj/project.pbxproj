@@ -23,8 +23,6 @@
 		0F936D992B63E4F800010050 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F936D982B63E4F800010050 /* Assets.xcassets */; };
 		0F936D9D2B63E4F800010050 /* WeatherWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0F936D902B63E4F700010050 /* WeatherWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0F936DA42B63EFAA00010050 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F936DA32B63EFAA00010050 /* WeatherData.swift */; };
-		0F936DA52B63FE2500010050 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBDE142B62A885002B3B7C /* LocationView.swift */; };
-		0FFBDE152B62A885002B3B7C /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBDE142B62A885002B3B7C /* LocationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,7 +92,6 @@
 		0F936D9A2B63E4F800010050 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F936DA12B63E64F00010050 /* WeatherWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeatherWidgetExtension.entitlements; sourceTree = "<group>"; };
 		0F936DA32B63EFAA00010050 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
-		0FFBDE142B62A885002B3B7C /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,7 +194,6 @@
 		0F936D6C2B63DAA900010050 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0FFBDE142B62A885002B3B7C /* LocationView.swift */,
 				0F8768592B61298A00733782 /* ContentView.swift */,
 			);
 			path = View;
@@ -410,7 +406,6 @@
 				0F936DA42B63EFAA00010050 /* WeatherData.swift in Sources */,
 				0F2E3A902B6FE6F700F410B1 /* WeatherModel.swift in Sources */,
 				0F2E3A932B6FE76B00F410B1 /* LocationManager.swift in Sources */,
-				0FFBDE152B62A885002B3B7C /* LocationView.swift in Sources */,
 				0F87685A2B61298A00733782 /* ContentView.swift in Sources */,
 				0F8768582B61298A00733782 /* Weather_appApp.swift in Sources */,
 			);
@@ -438,7 +433,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F936D972B63E4F700010050 /* WeatherWidget.swift in Sources */,
-				0F936DA52B63FE2500010050 /* LocationView.swift in Sources */,
 				0F936D952B63E4F700010050 /* WeatherWidgetBundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

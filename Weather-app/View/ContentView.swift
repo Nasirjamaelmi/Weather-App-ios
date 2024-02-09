@@ -27,48 +27,48 @@ struct ContentView: View {
     }
     var body: some View {
         ZStack{
+            LinearGradient(gradient: Gradient(colors: [Color.blue,Color.blue,Color.white, Color.white]),
+                           startPoint: .top,
+                           endPoint: .bottom)
+            .edgesIgnoringSafeArea(.all)
             
-        }
-        VStack(alignment: .center, spacing: 10
-        ){
-            Text("  Current Temp: \(String(format: "%.0f", model.weatherData?.current.temperature_2m ?? 0)) °C")
-            
-            if locationManager.location != nil{
-                Text("  City: \(locationManager.cityname)")
+            VStack(alignment: .center, spacing: 10
+            ){
+                Text("  Current Temp: \(String(format: "%.0f", model.weatherData?.current.temperature_2m ?? 0)) °C")
                 
-            }
-            else{
-                Text("No location")
-            }
-            
-            let index = 0
-            
-            
-            VStack(alignment: .center, spacing: 20){
-                if let weatherData = model.weatherData {
-                    ForEach(0..<min(7, weatherData.daily.time.count), id: \.self) { index in
-                        if index < weatherData.daily.time.count {
-                            let formattedDay = weatherData.daily.formattedDayOfWeek(forIndex: index)
-                            let minTemperature = weatherData.daily.temperature_2m_min[index]
-                            let maxTemperature = weatherData.daily.temperature_2m_max[index]
+                if locationManager.location != nil{
+                    Text("  City: \(locationManager.cityname)")
+                    
+                }
+                else{
+                    Text("No location")
+                }
+                VStack(alignment: .center, spacing: 20){
+                    if let weatherData = model.weatherData {
+                        ForEach(0..<min(7, weatherData.daily.time.count), id: \.self) { index in
+                            if index < weatherData.daily.time.count {
+                                let formattedDay = weatherData.daily.formattedDayOfWeek(forIndex: index)
+                                let minTemperature = weatherData.daily.temperature_2m_min[index]
+                                let maxTemperature = weatherData.daily.temperature_2m_max[index]
+                                
+                                Text(" \(formattedDay ):Temperature \(String(format: "%.0f",minTemperature)) - \(String(format:"%.0f",maxTemperature)) °C")
+                            }
                             
-                            Text(" \(formattedDay ) :Temperature \(String(format: "%.0f",minTemperature)) - \(String(format:"%.0f",maxTemperature)) °C")
                         }
-                        
                     }
-                }
-            }.padding(.top, 150)
-            
-            
-            
-            // .background(backgroundGradient)
-                .padding()
-                .onAppear(){
-                    locationManager.requestLocation()
-                }
-                .refreshable {
-                    locationManager.requestLocation()
-                }
+                }.padding(.top, 150)
+                
+                
+                
+                // .background(backgroundGradient)
+                    .padding()
+                    .onAppear(){
+                        locationManager.requestLocation()
+                    }
+                    .refreshable {
+                        locationManager.requestLocation()
+                    }
+            }
         }
     }
     
